@@ -28,11 +28,11 @@ $title = 'Liste des adhèrents';
               <tbody>
                 <?php foreach ($pager->getItems() as $adherent): ?>
                 <tr>
-                  <td><?php echo $adherent['id_mbr']; ?></td>
-                  <td><?php echo $adherent['nom']; ?></td>
-                  <td><?php echo $adherent['prenom']; ?></td>
-                  <td><?php echo $adherent['date_naiss']; ?></td>
-                  <td><?php echo $adherent['date_insc']; ?></td>
+                  <td><?php echo $adherent['id']; ?></td>
+                  <td><?php echo $adherent['lastname']; ?></td>
+                  <td><?php echo $adherent['firstname']; ?></td>
+                  <td><?php echo $adherent['birthday']; ?></td>
+                  <td><?php echo $adherent['created_at']; ?></td>
                 </tr>
                 <?php endforeach; ?>
               </tbody>

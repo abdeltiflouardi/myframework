@@ -51,21 +51,30 @@ class Http
      */
     public function get($name, $default = null)
     {
-        if (isset($_GET[$name])) {
-            return $_GET[$name];
-        } elseif (isset($_POST[$name])) {
-            return $_POST[$name];
-        } elseif (isset($_COOKIE[$name])) {
-            return $_COOKIE[$name];
-        } elseif (isset($_ENV[$name])) {
-            return $_ENV[$name];
-        } elseif (isset($_SERVER[$name])) {
-            return $_SERVER[$name];
+        $values = $this->all();
+
+        if (array_key_exists($name, $values)) {
+            return $values[$name];
         }
 
         return $default;
     }
 
+    /**
+     * 
+     * @return string[]
+     */
+    public function all()
+    {
+        return array_reverse(array_merge($_SERVER, $_SERVER, $_ENV, $_COOKIE, $_POST, $_GET));
+    }
+
+    /**
+     * 
+     * @param type $append
+     * @param type $remove
+     * @return string
+     */
     public function getCurrentUrl($append = array(), $remove = array())
     {
         $baseURI  = $this->get('PHP_SELF');

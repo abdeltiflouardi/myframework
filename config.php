@@ -26,7 +26,11 @@ include_once 'classes/Security.php';
 include_once 'classes/Session.php';
 include_once 'classes/DB.php';
 include_once 'classes/Pager.php';
+include_once 'classes/Validator.php';
 include_once 'models/Adherents.php';
+include_once 'requests/Request.php';
+include_once 'requests/Adherent.php';
+
 
 // Test if user is connected
 if (defined('IS_AUTHENTICATED_MODE') && IS_AUTHENTICATED_MODE == true) {

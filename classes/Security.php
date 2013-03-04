@@ -54,7 +54,7 @@ class Security
     /**
      * 
      */
-    public function logout()
+    public function doLogout()
     {
         Session::getInstance()->destroy();
     }

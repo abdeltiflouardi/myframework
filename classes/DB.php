@@ -70,4 +70,13 @@ class DB
     {
         return $this->db->query($sql);
     }
+
+    /**
+     * 
+     * @return PDO
+     */
+    public function getConnection()
+    {
+        return $this->db;
+    }
 }
