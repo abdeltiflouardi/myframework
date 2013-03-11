@@ -11,7 +11,7 @@ $title = 'Liste des adhèrents';
       <!-- Example row of columns -->
       <div class="row-fluid">
             <a href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'new'), array('action', Config::getInstance()->getPageName())) ?>" class="btn btn-primary">
-                Créer un adhérent
+                <i class="icon-plus-sign icon-white"></i> Créer un adhérent
             </a>
 
             <h3 class="muted">Liste des adhérents</h3>
@@ -30,14 +30,21 @@ $title = 'Liste des adhèrents';
                 <?php foreach ($pager->getItems() as $indice => $adherent): ?>
                 <tr>
                     <td>
-                        <a href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'details', 'id' => $adherent['id']), array('page')) ?>"><?php echo $adherent['id']; ?></a>
+                        <?php echo $adherent['id'] ?>
                     </td>
                     <td><?php echo $adherent['lastname']; ?></td>
                     <td><?php echo $adherent['firstname']; ?></td>
                     <td><?php echo $adherent['birthday']; ?></td>
                     <td><?php echo $adherent['created_at']; ?></td>
                     <td>
-                        <a href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'edit', 'id' => $adherent['id']), array('page')) ?>"><?php echo $adherent['id']; ?></a>
+                        <p class="text-center">
+                            <a class="btn btn-mini" href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'edit', 'id' => $adherent['id']), array('page')) ?>">
+                                <i class="icon-pencil"></i>
+                            </a>
+                            <a class="btn btn-mini" href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'details', 'id' => $adherent['id']), array('page')) ?>">
+                                <i class="icon-folder-open"></i>
+                            </a>
+                        </p>
                     </td>
                 </tr>
                 <?php endforeach; ?>
