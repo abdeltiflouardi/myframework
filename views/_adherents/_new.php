@@ -1,10 +1,5 @@
 <?php include './views/_style.php'; ?>
 
-<?php
-// View title
-$title = 'Nouveau adhérent';
-?>
-
 <?php ob_start(); ?>
     <?php include './views/_menu.php'; ?>
 
@@ -12,7 +7,7 @@ $title = 'Nouveau adhérent';
       <div class="row-fluid">
           <form class="form-horizontal" method="post" action="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'create'), array('action')) ?>">
               <fieldset>
-                  <legend>Un nouveau adhérent</legend>
+                  <legend><?php echo $title ?></legend>
                   <div class="control-group<?php $adherentRequest->hasError('Lastname') ? print ' error' : ''; ?>">
                       <label class="control-label" for="inputLastname">Nom</label>
                       <div class="controls">
@@ -106,4 +101,4 @@ $title = 'Nouveau adhérent';
       <?php include './views/_footer.php'; ?>
 <?php $body_content = ob_get_contents(); ob_end_clean(); ?>
 
-<?php include '_template.php'; ?>
+<?php include './views/_template.php'; ?>

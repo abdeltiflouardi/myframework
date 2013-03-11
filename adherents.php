@@ -15,12 +15,14 @@ switch ($action) {
 
         $pager->setModel($adherents);
 
-        include './views/_adherents_list.php';
+        include './views/_adherents/_list.php';
         break;
     case 'new':
         $adherentRequest = new Adherent();
 
-        include './views/_adherents_new.php';
+        $title = 'Nouveau adhérent';
+
+        include './views/_adherents/_new.php';
         break;
     case 'create':
         if (!$http->isPost()) {
@@ -37,13 +39,22 @@ switch ($action) {
             $http->redirectTo($http->getCurrentUrl(array('action' => 'update', 'id' => $lastid)));
         }
 
-        include './views/_adherents_new.php';
+        $title = 'Modifier Adhérent';
+
+        include './views/_adherents/_new.php';
         break;
-    case 'update':
+    case 'edit':
         $id = $http->get('id');
 
         $adherentRequest = new Adherent();
 
-        include './views/_adherents_new.php';
+        $title = 'Modifier Adhérent';
+
+        include './views/_adherents/_new.php';
+        break;
+    case 'details':
+        $id = $http->get('id');
+
+        include './views/_adherents/_details.php';
         break;
 }

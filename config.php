@@ -3,8 +3,8 @@
 // User vars
 define('LOGIN_PAGE', 'signin.php');
 define('DEFAULT_PAGE', 'back.php');
-define('PAGER_PER_PAGE', 4);
-define('PAGE_NAME', 'pg');
+define('PAGER_PER_PAGE', 10);
+define('PAGE_NAME', 'page');
 
 // Security vars
 define('SESSION_NAME', 'sname');
