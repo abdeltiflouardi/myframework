@@ -11,14 +11,14 @@ switch ($action) {
     case 'list':
         $pager     = Pager::getInstance();
 
-        $adherents = new Adherents();
+        $adherentModel = new AdherentModel();
 
-        $pager->setModel($adherents);
+        $pager->setModel($adherentModel);
 
         include './views/_adherents/_list.php';
         break;
     case 'new':
-        $adherentRequest = new Adherent();
+        $adherentRequest = new AdherentRequest();
 
         $title = 'Nouveau adhérent';
 
@@ -29,14 +29,23 @@ switch ($action) {
             $http->redirectTo($http->getCurrentUrl(array('action' => 'new')));
         }
 
-        $adherentRequest = new Adherent();
+        $adherentRequest = new AdherentRequest();
         $adherentRequest->checkData($http->get('input', array()));
 
         if (count($adherentRequest->getErrors()) == 0) {
-            $adherents = new Adherents();
-            $lastid = $adherents->insert($http->get('input', array()));
+            $adherentModel = new AdherentModel();
 
-            $http->redirectTo($http->getCurrentUrl(array('action' => 'update', 'id' => $lastid)));
+            $id = (int)$http->get('id');
+
+            if ($id) {
+                $adherentModel->update($id, $http->get('input', array()));
+
+                $lastid = $id;
+            } else {
+                $lastid = $adherentModel->insert($http->get('input', array()));
+            }
+
+            $http->redirectTo($http->getCurrentUrl(array('action' => 'details', 'id' => $lastid)));
         }
 
         $title = 'Modifier Adhérent';
@@ -44,9 +53,16 @@ switch ($action) {
         include './views/_adherents/_new.php';
         break;
     case 'edit':
-        $id = $http->get('id');
+        $id = (int)$http->get('id');
 
-        $adherentRequest = new Adherent();
+        // Request to check form data on submit
+        $adherentRequest = new AdherentRequest();
+
+        // findOne
+        $adherentModel = new AdherentModel();
+        $adherent      = $adherentModel->findOne($id);
+
+        $adherentRequest->fromDB($adherent);
 
         $title = 'Modifier Adhérent';
 

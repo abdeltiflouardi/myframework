@@ -10,7 +10,7 @@ $title = 'Liste des adhèrents';
 
       <!-- Example row of columns -->
       <div class="row-fluid">
-            <a href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'new'), array('action', Config::getInstance()->getPageName())) ?>" class="btn btn-primary">
+            <a href="<?php echo $http->getCurrentUrl(array('action' => 'new'), array('action', Config::getInstance()->getPageName())) ?>" class="btn btn-primary">
                 <i class="icon-plus-sign icon-white"></i> Créer un adhérent
             </a>
 
@@ -38,10 +38,10 @@ $title = 'Liste des adhèrents';
                     <td><?php echo $adherent['created_at']; ?></td>
                     <td>
                         <p class="text-center">
-                            <a class="btn btn-mini" href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'edit', 'id' => $adherent['id']), array('page')) ?>">
+                            <a class="btn btn-mini" href="<?php echo $http->getCurrentUrl(array('action' => 'edit', 'id' => $adherent['id']), array('page')) ?>">
                                 <i class="icon-pencil"></i>
                             </a>
-                            <a class="btn btn-mini" href="<?php echo Http::getInstance()->getCurrentUrl(array('action' => 'details', 'id' => $adherent['id']), array('page')) ?>">
+                            <a class="btn btn-mini" href="<?php echo $http->getCurrentUrl(array('action' => 'details', 'id' => $adherent['id']), array('page')) ?>">
                                 <i class="icon-folder-open"></i>
                             </a>
                         </p>

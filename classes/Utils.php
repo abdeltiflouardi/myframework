@@ -21,4 +21,15 @@ class Utils
         return self::$instance;
     }
 
+    public static function camlizeKeys($data)
+    {
+        return array_combine(array_map(array('Utils', 'camlize'), array_keys($data)), array_values($data));
+    }
+
+    public static function camlize($word)
+    {
+        return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
+    }
+
+    
 }

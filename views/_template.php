@@ -45,7 +45,7 @@
                     viewMode: 'years'
                 });
 
-                $('#inputBirthday').val('');
+                //$('#inputBirthday').val('');
                 $('.btn').button();
             });
         </script>

@@ -27,9 +27,9 @@ include_once 'classes/Session.php';
 include_once 'classes/DB.php';
 include_once 'classes/Pager.php';
 include_once 'classes/Validator.php';
-include_once 'models/Adherents.php';
+include_once 'models/AdherentModel.php';
 include_once 'requests/Request.php';
-include_once 'requests/Adherent.php';
+include_once 'requests/AdherentRequest.php';
 
 
 // Test if user is connected
